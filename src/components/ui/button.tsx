@@ -15,6 +15,10 @@ const variantClasses: Record<ButtonVariant, string> = {
     "text-muted hover:bg-surface hover:text-foreground focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 focus-visible:ring-offset-background",
 };
 
+export function buttonClassName(variant: ButtonVariant, className = "") {
+  return `inline-flex min-h-11 items-center justify-center rounded-lg px-4 py-2.5 text-sm font-semibold transition-[background-color,border-color,color,box-shadow,transform] duration-200 hover:-translate-y-px focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 focus-visible:ring-offset-background ${variantClasses[variant]} ${className}`;
+}
+
 export function Button({
   className = "",
   type = "button",
@@ -23,7 +27,7 @@ export function Button({
 }: ButtonProps) {
   return (
     <button
-      className={`inline-flex min-h-11 items-center justify-center rounded-lg px-4 py-2.5 text-sm font-semibold transition-colors disabled:pointer-events-none disabled:opacity-50 ${variantClasses[variant]} ${className}`}
+      className={`${buttonClassName(variant, className)} disabled:pointer-events-none disabled:opacity-50`}
       type={type}
       {...props}
     />
