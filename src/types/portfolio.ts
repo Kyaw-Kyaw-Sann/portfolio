@@ -27,6 +27,43 @@ export type CoreStackItem = {
   technology: string;
 };
 
+export type Screenshot = {
+  src: string;
+  alt: string;
+  caption: string;
+};
+
+export type FeatureGroup = {
+  title: string;
+  features: string[];
+};
+
+export type TechnologyRole = {
+  technology: string;
+  responsibility: string;
+};
+
+export type ProjectWorkflow = {
+  title: string;
+  steps: string[];
+  note?: string;
+};
+
+export type ProjectCaseStudy = {
+  overview: string;
+  problem: string;
+  solution: string;
+  systemArchitecture: string[];
+  featureGroups: FeatureGroup[];
+  engineeringChallenge: string;
+  technicalDecisions: string[];
+  learnings: string[];
+  technologyRoles?: TechnologyRole[];
+  workflow?: ProjectWorkflow;
+  highlightFirstScreenshot?: boolean;
+  plannedFeatures?: string[];
+};
+
 export type Project = {
   slug: string;
   name: string;
@@ -34,8 +71,9 @@ export type Project = {
   description: string;
   stack: string[];
   highlights: string[];
-  screenshots: string[];
+  screenshots: Screenshot[];
   githubUrl: string | null;
   liveUrl: string | null;
   caseStudyUrl: string;
+  caseStudy: ProjectCaseStudy;
 };

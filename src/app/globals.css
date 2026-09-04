@@ -13,6 +13,18 @@
   --font-sans: Arial, Helvetica, sans-serif;
 }
 
+html[data-theme="light"] {
+  --background: #f8fafc;
+  --surface: #ffffff;
+  --surface-raised: #f1f5f9;
+  --foreground: #0f172a;
+  --muted: #475569;
+  --border: #cbd5e1;
+  --accent: #4f46e5;
+  --accent-hover: #4338ca;
+  --focus-ring: #4338ca;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-surface: var(--surface);
@@ -37,6 +49,7 @@ body {
 
 html {
   scroll-behavior: smooth;
+  background: var(--background);
 }
 
 body {
@@ -45,6 +58,7 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans);
   line-height: 1.5;
+  transition: background-color 200ms ease, color 200ms ease;
 }
 
 ::selection {
@@ -55,6 +69,11 @@ body {
 :focus-visible {
   outline: 2px solid var(--focus-ring);
   outline-offset: 3px;
+}
+
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
 }
 
 @media (prefers-reduced-motion: reduce) {

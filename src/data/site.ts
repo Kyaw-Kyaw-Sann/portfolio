@@ -33,5 +33,5 @@ export const site: SiteContent = {
       href: "mailto:kyawhsan042219@gmail.com",
     },
   ],
-  resumeUrl: "/resume/resume.pdf",
+  resumeUrl: "/resume/Kyaw_Kyaw_Hsan_CV.pdf",
 };
