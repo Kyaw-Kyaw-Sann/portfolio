@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { ScrollReveal } from "@/components/layout/scroll-reveal";
 
 const themeInitializationScript = `
   (() => {
@@ -26,7 +27,7 @@ export default function RootLayout({
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInitializationScript }} />
       </head>
-      <body>{children}</body>
+      <body>{children}<ScrollReveal /></body>
     </html>
   );
 }

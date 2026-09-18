@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { ProjectImage } from "@/components/ui/project-image";
 import { PageContainer } from "@/components/layout/page-container";
 import { Section } from "@/components/layout/section";
 import { Card } from "@/components/ui/card";
@@ -12,8 +12,7 @@ export function ScreenshotGallery({ project }: ScreenshotGalleryProps) {
   return (
     <Section aria-labelledby="screenshots-heading" className="border-t border-border">
       <PageContainer>
-        <p className="text-sm font-medium text-accent">Screenshots</p>
-        <h2 id="screenshots-heading" className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
+        <h2 id="screenshots-heading" className="text-3xl font-bold tracking-tight sm:text-4xl">
           Product interface evidence
         </h2>
         {project.screenshots.length > 0 ? (
@@ -25,11 +24,11 @@ export function ScreenshotGallery({ project }: ScreenshotGalleryProps) {
               >
                 <Card className="p-3 sm:p-4">
                   <div className="relative aspect-[16/10] overflow-hidden rounded-lg border border-border bg-background">
-                    <Image
+                    <ProjectImage
                       src={screenshot.src}
                       alt={screenshot.alt}
                       fill
-                      sizes="(min-width: 640px) 50vw, 100vw"
+                      sizes={project.caseStudy.highlightFirstScreenshot && index === 0 ? "(min-width: 1280px) 1152px, 100vw" : "(min-width: 1280px) 560px, (min-width: 640px) 50vw, 100vw"}
                       className="object-contain object-center"
                     />
                   </div>

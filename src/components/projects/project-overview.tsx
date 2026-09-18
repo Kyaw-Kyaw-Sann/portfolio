@@ -13,8 +13,7 @@ export function ProjectOverview({ project }: ProjectOverviewProps) {
   return (
     <Section aria-labelledby="overview-heading">
       <PageContainer>
-        <p className="text-sm font-medium text-accent">Overview</p>
-        <h2 id="overview-heading" className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
+        <h2 id="overview-heading" className="text-3xl font-bold tracking-tight sm:text-4xl">
           Product context
         </h2>
         <div className="mt-8 grid gap-4 lg:grid-cols-3">

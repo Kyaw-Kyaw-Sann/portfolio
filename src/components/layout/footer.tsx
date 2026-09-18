@@ -6,7 +6,7 @@ export function Footer() {
     <footer className="border-t border-border py-8">
       <PageContainer className="flex flex-col gap-2 text-sm text-muted sm:flex-row sm:items-center sm:justify-between">
         <p>© {new Date().getFullYear()} {site.name}.</p>
-        <p>Junior Full-Stack Developer</p>
+        <p>{site.role}</p>
       </PageContainer>
     </footer>
   );

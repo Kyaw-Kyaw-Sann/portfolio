@@ -2,7 +2,7 @@ import type { SiteContent } from "@/types/portfolio";
 
 export const site: SiteContent = {
   name: "Kyaw Kyaw Hsan",
-  role: "Junior Full-Stack Developer",
+  role: "Full-Stack Developer Intern",
   education: {
     degree: "Final-Year Computer Science Student",
     institution: "University of Computer Studies, Pyay",
@@ -17,7 +17,7 @@ export const site: SiteContent = {
     "I am a final-year Computer Science student at the University of Computer Studies, Pyay.",
     "I focus on full-stack web and mobile development through complete, practical applications.",
     "My core stack is Spring Boot, PostgreSQL, Next.js, and React Native.",
-    "I am currently preparing for a junior developer role.",
+    "I am seeking a software development internship to contribute and learn in a professional team.",
   ],
   socialLinks: [
     {

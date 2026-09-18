@@ -17,25 +17,19 @@ export function ProjectWorkflow({ project }: ProjectWorkflowProps) {
   return (
     <Section aria-labelledby="workflow-heading" className="border-t border-border">
       <PageContainer>
-        <p className="text-sm font-medium text-accent">Workflow</p>
-        <h2 id="workflow-heading" className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
+        <h2 id="workflow-heading" className="text-3xl font-bold tracking-tight sm:text-4xl">
           {workflow.title}
         </h2>
-        <ol className="mt-8 flex flex-col gap-3 xl:flex-row xl:items-stretch">
+        <ol className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {workflow.steps.map((step, index) => (
-            <li key={step} className="flex flex-1 flex-col items-stretch gap-3 xl:contents">
-              <Card className="flex min-h-24 flex-1 items-center gap-3 py-4">
+            <li key={step} className="min-w-0">
+              <Card className="flex h-full min-h-24 items-center gap-3 py-4">
                 <span className="grid size-8 shrink-0 place-items-center rounded-full bg-accent/15 text-sm font-semibold text-focus">
                   {index + 1}
                 </span>
-                <span className="text-sm font-medium">{step}</span>
+                <span className="min-w-0 text-sm font-medium">{step}</span>
+                {index < workflow.steps.length - 1 ? <span aria-hidden="true" className="ml-auto text-accent">→</span> : null}
               </Card>
-              {index < workflow.steps.length - 1 ? (
-                <span aria-hidden="true" className="text-xl text-accent xl:hidden">↓</span>
-              ) : null}
-              {index < workflow.steps.length - 1 ? (
-                <span aria-hidden="true" className="hidden text-xl text-accent xl:self-center xl:block">→</span>
-              ) : null}
             </li>
           ))}
         </ol>

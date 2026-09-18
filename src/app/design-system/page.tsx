@@ -21,8 +21,7 @@ export default function DesignSystemPage() {
     <main>
       <Section className="border-b border-border">
         <PageContainer>
-          <p className="text-sm font-medium text-accent">Portfolio foundation</p>
-          <h1 className="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">
+          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
             Design system
           </h1>
           <p className="mt-4 max-w-2xl text-base text-muted sm:text-lg">
@@ -57,8 +56,7 @@ export default function DesignSystemPage() {
             Typography
           </h2>
           <Card className="mt-6">
-            <p className="text-sm font-medium text-accent">Eyebrow text</p>
-            <h3 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
+            <h3 className="text-3xl font-bold tracking-tight sm:text-4xl">
               Clear hierarchy supports quick scanning.
             </h3>
             <p className="mt-4 max-w-2xl text-base text-muted sm:text-lg">

@@ -11,8 +11,7 @@ export function TechnicalDecisions({ project }: TechnicalDecisionsProps) {
   return (
     <Section aria-labelledby="decisions-heading" className="border-t border-border">
       <PageContainer>
-        <p className="text-sm font-medium text-accent">Technical decisions</p>
-        <h2 id="decisions-heading" className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
+        <h2 id="decisions-heading" className="text-3xl font-bold tracking-tight sm:text-4xl">
           Deliberate implementation choices
         </h2>
         <ol className="mt-8 grid gap-4 md:grid-cols-2">

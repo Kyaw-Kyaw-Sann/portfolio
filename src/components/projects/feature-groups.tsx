@@ -11,8 +11,7 @@ export function FeatureGroups({ project }: FeatureGroupsProps) {
   return (
     <Section aria-labelledby="features-heading" className="border-t border-border">
       <PageContainer>
-        <p className="text-sm font-medium text-accent">Key features</p>
-        <h2 id="features-heading" className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
+        <h2 id="features-heading" className="text-3xl font-bold tracking-tight sm:text-4xl">
           Product responsibilities
         </h2>
         <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">

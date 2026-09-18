@@ -1,101 +1,32 @@
-import Image from "next/image";
 import Link from "next/link";
-import { Badge } from "@/components/ui/badge";
-import { buttonClassName } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
+import { ArrowUpRight } from "lucide-react";
 import { PageContainer } from "@/components/layout/page-container";
 import { Section } from "@/components/layout/section";
+import { ProjectImage } from "@/components/ui/project-image";
 import { projects } from "@/data/projects";
-import type { Project } from "@/types/portfolio";
-
-function ProjectPreview({ project }: { project: Project }) {
-  const screenshot = project.screenshots[0];
-
-  return (
-    <Card interactive className="relative grid gap-6 overflow-hidden lg:grid-cols-[minmax(0,0.9fr)_minmax(20rem,1.1fr)] lg:items-center">
-      <Link
-        href={project.caseStudyUrl}
-        aria-label={`Read the ${project.name} case study`}
-        className="absolute inset-0 z-10 rounded-xl focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-      />
-      <div className="pointer-events-none relative z-20">
-        <h3 className="text-2xl font-semibold tracking-tight">{project.name}</h3>
-        <p className="mt-2 text-base text-muted">{project.description}</p>
-        <div className="mt-5 flex flex-wrap gap-2">
-          {project.stack.map((technology) => (
-            <Badge key={technology} tone={technology === "AI Integration" ? "accent" : "default"}>
-              {technology}
-            </Badge>
-          ))}
-        </div>
-        <ul className="mt-5 space-y-2 text-sm leading-6 text-muted">
-          {project.highlights.map((highlight) => (
-            <li key={highlight} className="flex gap-2">
-              <span aria-hidden="true" className="mt-2 size-1.5 shrink-0 rounded-full bg-accent" />
-              <span>{highlight}</span>
-            </li>
-          ))}
-        </ul>
-        <div className="pointer-events-auto mt-6 flex flex-wrap gap-3">
-          <Link href={project.caseStudyUrl} className={buttonClassName("secondary")}>
-            Case Study
-          </Link>
-          {project.githubUrl ? (
-            <a
-              href={project.githubUrl}
-              target="_blank"
-              rel="noreferrer"
-              className={buttonClassName("secondary")}
-            >
-              GitHub
-            </a>
-          ) : (
-            <span className="inline-flex min-h-11 items-center justify-center rounded-lg border border-border px-4 py-2.5 text-sm font-semibold text-muted">
-              GitHub · Pending
-            </span>
-          )}
-          {project.liveUrl ? (
-            <a
-              href={project.liveUrl}
-              target="_blank"
-              rel="noreferrer"
-              className={buttonClassName("primary")}
-            >
-              Live Demo
-            </a>
-          ) : null}
-        </div>
-      </div>
-
-      {screenshot ? (
-        <div className="pointer-events-none relative z-20 aspect-[16/10] overflow-hidden rounded-lg border border-border bg-background">
-          <Image
-            src={screenshot.src}
-            alt={screenshot.alt}
-            fill
-            sizes="(min-width: 1024px) 42vw, 100vw"
-            className="object-contain object-center"
-          />
-        </div>
-      ) : null}
-    </Card>
-  );
-}
-
 export function FeaturedProjects() {
   return (
-    <Section id="projects" aria-labelledby="projects-heading" className="border-t border-border">
+    <Section id="projects" aria-labelledby="projects-heading">
       <PageContainer>
-        <p className="text-sm font-medium text-accent">Selected work</p>
-        <h2 id="projects-heading" className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
-          Featured projects
-        </h2>
-        <p className="mt-4 max-w-2xl text-muted">
-          Three complete products that demonstrate web, mobile, backend, and product-focused engineering.
-        </p>
-        <div className="mt-8 space-y-5">
+        <div className="flex flex-wrap items-end justify-between gap-6"><div><h2 id="projects-heading" className="text-4xl font-semibold tracking-tight sm:text-5xl">Built from the ground up.</h2></div><p className="max-w-xs text-sm leading-6 text-muted">Three projects. Web, mobile, and the systems that connect them.</p></div>
+        <div className="mt-12">
           {projects.map((project) => (
-            <ProjectPreview key={project.slug} project={project} />
+            <article key={project.slug} data-reveal className="group relative grid gap-8 border-t border-border py-10 lg:grid-cols-[1.2fr_1fr] lg:gap-14 lg:py-14">
+              <Link href={project.caseStudyUrl} scroll aria-label={`Read the ${project.name} case study`} className="absolute inset-0 z-10 rounded-sm focus-visible:outline-offset-4" />
+              {project.screenshots[0] ? <div className="pointer-events-none relative aspect-[16/11] overflow-hidden rounded-md border border-border bg-surface p-4 sm:p-6"><ProjectImage src={project.screenshots[0].src} alt={project.screenshots[0].alt} fill sizes="(min-width: 1280px) 640px, (min-width: 1024px) 55vw, 100vw" className="object-contain p-3 transition-transform duration-500 group-hover:scale-[1.02]" /></div> : null}
+              <div className="pointer-events-none relative">
+                <div className="flex items-center justify-end"><ArrowUpRight className="text-muted transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" aria-hidden="true" /></div>
+                <h3 className="mt-5 text-3xl font-semibold tracking-tight sm:text-4xl">{project.name}</h3>
+                <p className="mt-4 leading-7 text-muted">{project.description}</p>
+                <p className="mt-5 font-mono text-xs leading-6 text-muted">{project.stack.join(" / ")}</p>
+                <ul className="mt-6 space-y-3 text-sm leading-6 text-muted">{project.highlights.slice(0, 3).map((highlight) => <li key={highlight} className="border-l border-border pl-4">{highlight}</li>)}</ul>
+                <div className="relative z-20 mt-6 flex flex-wrap gap-5">
+                  <Link href={project.caseStudyUrl} scroll className="editorial-link pointer-events-auto text-sm">Read case study <ArrowUpRight size={16} aria-hidden="true" /></Link>
+                  {project.githubUrl ? <a href={project.githubUrl} className="editorial-link pointer-events-auto text-sm" target="_blank" rel="noreferrer">GitHub</a> : null}
+                  {project.liveUrl ? <a href={project.liveUrl} className="editorial-link pointer-events-auto text-sm" target="_blank" rel="noreferrer">Live demo</a> : null}
+                </div>
+              </div>
+            </article>
           ))}
         </div>
       </PageContainer>

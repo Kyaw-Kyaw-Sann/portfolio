@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { ProjectImage } from "@/components/ui/project-image";
 import Link from "next/link";
 import { PageContainer } from "@/components/layout/page-container";
 import { Section } from "@/components/layout/section";
@@ -22,8 +22,7 @@ export function ProjectHero({ project }: ProjectHeroProps) {
         </Link>
         <div className="mt-8 grid items-center gap-8 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-12">
           <div>
-            <p className="text-sm font-medium text-accent">Project case study</p>
-            <h1 className="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">{project.name}</h1>
+            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">{project.name}</h1>
             <p className="mt-3 text-xl text-muted">{project.tagline}</p>
             <p className="mt-5 max-w-2xl leading-7 text-muted">{project.description}</p>
             <div className="mt-6 flex flex-wrap gap-2">
@@ -62,7 +61,7 @@ export function ProjectHero({ project }: ProjectHeroProps) {
           {screenshot ? (
             <Card className="p-3 sm:p-4">
               <div className="relative aspect-[16/10] overflow-hidden rounded-lg border border-border bg-background">
-                <Image
+                <ProjectImage
                   src={screenshot.src}
                   alt={screenshot.alt}
                   fill

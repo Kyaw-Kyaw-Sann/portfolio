@@ -1,117 +1,51 @@
 "use client";
-
-import { Menu, X } from "lucide-react";
+import { Menu, X, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { site } from "@/data/site";
-import { buttonClassName } from "@/components/ui/button";
 import { PageContainer } from "./page-container";
 import { ThemeToggle } from "./theme-toggle";
+import { BrandMark } from "./brand-mark";
 
-const navigationLinks = [
+const links = [
   { href: "/#projects", label: "Projects" },
   { href: "/#about", label: "About" },
-  { href: site.resumeUrl, label: "Resume", external: true },
-  {
-    href: "https://github.com/Kyaw-Kyaw-Sann",
-    label: "GitHub",
-    external: true,
-  },
+  { href: "/resume", label: "Resume" },
+  { href: site.socialLinks.find((link) => link.label === "GitHub")!.href, label: "GitHub", external: true },
+  { href: "/#contact", label: "Contact" },
 ];
-
 export function Navbar() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  function closeMenu() {
-    setIsMenuOpen(false);
-  }
-
+  const dialog = useRef<HTMLDialogElement>(null);
+  const trigger = useRef<HTMLButtonElement>(null);
+  const [open, setOpen] = useState(false);
+  function closeMenu() { dialog.current?.close(); }
   useEffect(() => {
-    function handleKeyDown(event: KeyboardEvent) {
-      if (event.key === "Escape") {
-        closeMenu();
-      }
-    }
-
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, []);
-
+    if (!open) return;
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const desktop = matchMedia("(min-width: 768px)");
+    const onResize = () => { if (desktop.matches) dialog.current?.close(); };
+    desktop.addEventListener("change", onResize);
+    return () => { document.body.style.overflow = previous; desktop.removeEventListener("change", onResize); };
+  }, [open]);
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur-sm">
-      <PageContainer>
-        <div className="flex min-h-16 items-center justify-between gap-3 py-3">
-          <Link
-            href="/"
-            onClick={closeMenu}
-            className="flex min-w-0 items-center gap-3 rounded-md text-sm font-semibold text-foreground transition-colors duration-200 hover:text-focus"
-          >
-            <span className="grid size-8 place-items-center rounded-md bg-accent text-lg font-bold text-white">
-              K
-            </span>
-            <span className="truncate">{site.name}</span>
-          </Link>
-
-          <nav aria-label="Primary navigation" className="hidden items-center gap-x-4 text-sm md:flex lg:gap-x-5">
-            {navigationLinks.map(({ href, label, external }) => (
-              <a
-                key={label}
-                href={href}
-                className="rounded-md text-muted transition-colors duration-200 hover:text-foreground"
-                {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
-              >
-                {label}
-              </a>
-            ))}
-            <Link href="/#contact" className={buttonClassName("primary", "min-h-9 px-3 py-1.5")}>
-              Contact
-            </Link>
-            <ThemeToggle />
-          </nav>
-
-          <div className="flex items-center gap-2 md:hidden">
-            <ThemeToggle />
-            <button
-              type="button"
-              aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
-              aria-expanded={isMenuOpen}
-              aria-controls="mobile-navigation"
-              onClick={() => setIsMenuOpen((open) => !open)}
-              className="inline-flex size-10 items-center justify-center rounded-lg border border-border bg-surface text-muted transition-[background-color,border-color,color,transform] duration-200 hover:-translate-y-px hover:border-muted/50 hover:bg-surface-raised hover:text-foreground"
-            >
-              {isMenuOpen ? <X aria-hidden="true" size={20} /> : <Menu aria-hidden="true" size={20} />}
-            </button>
-          </div>
-        </div>
-
-        <nav
-          id="mobile-navigation"
-          aria-label="Mobile navigation"
-          inert={!isMenuOpen || undefined}
-          className={`grid overflow-hidden transition-[grid-template-rows,opacity] duration-200 ease-out md:hidden ${
-            isMenuOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
-          }`}
-        >
-          <div className="min-h-0">
-            <div className="grid gap-1 border-t border-border py-3">
-              {navigationLinks.map(({ href, label, external }) => (
-                <a
-                  key={label}
-                  href={href}
-                  onClick={closeMenu}
-                  className="rounded-lg px-3 py-2.5 text-sm font-medium text-muted transition-colors duration-200 hover:bg-surface hover:text-foreground"
-                  {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
-                >
-                  {label}
-                </a>
-              ))}
-              <Link href="/#contact" onClick={closeMenu} className={buttonClassName("primary", "mt-2 w-full")}>
-                Contact
-              </Link>
-            </div>
-          </div>
+    <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur-md">
+      <PageContainer className="flex min-h-20 items-center justify-between gap-4">
+        <Link href="/" className="flex min-w-0 items-center gap-3 rounded-sm font-semibold tracking-tight" aria-label={site.name + " — Home"}><BrandMark /><span className="text-sm sm:text-base">{site.name}</span></Link>
+        <nav aria-label="Primary navigation" className="hidden items-center gap-6 text-sm md:flex">
+          {links.map((link) => <Link key={link.label} href={link.href} className="nav-link" {...(link.external ? { target: "_blank", rel: "noreferrer" } : {})}>{link.label}</Link>)}
         </nav>
+        <div className="flex shrink-0 items-center gap-2"><ThemeToggle /><button ref={trigger} type="button" className="grid size-11 place-items-center rounded-md border border-border md:hidden" aria-label="Open navigation menu" aria-expanded={open} aria-controls="mobile-navigation" onClick={() => { dialog.current?.showModal(); setOpen(true); }}><Menu size={21} /></button></div>
       </PageContainer>
+      <dialog ref={dialog} id="mobile-navigation" aria-labelledby="menu-title" className="mobile-drawer" onClick={(event) => { if (event.target === event.currentTarget) closeMenu(); }} onClose={() => { setOpen(false); trigger.current?.focus(); }}>
+        <div className="drawer-content">
+          <div className="flex items-center justify-end border-b border-border pb-6"><span id="menu-title" className="sr-only">Navigation</span><button type="button" autoFocus onClick={closeMenu} aria-label="Close navigation menu" className="grid size-11 place-items-center rounded-md border border-border"><X /></button></div>
+          <nav aria-label="Mobile navigation" className="mt-8 grid">
+            {links.map((link, index) => <Link key={link.label} href={link.href} onClick={closeMenu} className="flex items-center gap-4 border-b border-border py-5 text-2xl" {...(link.external ? { target: "_blank", rel: "noreferrer" } : {})}><span className="font-mono text-xs text-muted">0{index + 1}</span>{link.label}<ArrowUpRight size={20} className="ml-auto text-muted" /></Link>)}
+          </nav>
+          <p className="mt-auto pt-12 text-sm text-muted">{site.name}<br />{site.role}</p>
+        </div>
+      </dialog>
     </header>
   );
 }

@@ -1,29 +1,13 @@
-import { Card } from "@/components/ui/card";
 import { PageContainer } from "@/components/layout/page-container";
 import { Section } from "@/components/layout/section";
 import { site } from "@/data/site";
-
 export function AboutSection() {
   return (
-    <Section id="about" aria-labelledby="about-heading" className="border-t border-border">
-      <PageContainer>
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,0.75fr)_minmax(0,1.25fr)] lg:items-start">
-          <div>
-            <p className="text-sm font-medium text-accent">About</p>
-            <h2 id="about-heading" className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
-              Building through practice.
-            </h2>
-          </div>
-          <Card>
-            <div className="space-y-3 text-muted">
-              {site.about.map((paragraph) => (
-                <p key={paragraph}>{paragraph}</p>
-              ))}
-            </div>
-            <p className="mt-6 border-t border-border pt-4 text-sm text-muted">
-              {site.education.degree} · {site.education.institution} · Expected graduation {site.education.expectedGraduation}
-            </p>
-          </Card>
+    <Section id="about" aria-labelledby="about-heading">
+      <PageContainer className="grid gap-10 md:grid-cols-[1fr_1.5fr] lg:gap-20">
+        <div><h2 id="about-heading" className="text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">Learning by<br /><span className="text-muted">building.</span></h2></div>
+        <div><div className="space-y-5 text-lg leading-relaxed text-muted">{site.about.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div>
+          <div className="mt-10 border-l-2 border-accent pl-5"><p className="font-medium">{site.education.institution}</p><p className="mt-2 text-sm text-muted">{site.education.degree} · Expected {site.education.expectedGraduation}</p></div>
         </div>
       </PageContainer>
     </Section>

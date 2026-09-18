@@ -15,8 +15,7 @@ export function ProjectCta({ project }: ProjectCtaProps) {
       <PageContainer>
         <Card className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <p className="text-sm font-medium text-accent">Explore more</p>
-            <h2 className="mt-2 text-2xl font-bold tracking-tight">See the rest of my project work.</h2>
+            <h2 className="text-2xl font-bold tracking-tight">See the rest of my project work.</h2>
           </div>
           <div className="flex flex-wrap gap-3">
             {project.githubUrl ? (

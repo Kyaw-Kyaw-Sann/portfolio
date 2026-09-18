@@ -11,8 +11,7 @@ export function SystemArchitecture({ project }: SystemArchitectureProps) {
   return (
     <Section aria-labelledby="architecture-heading" className="border-t border-border">
       <PageContainer>
-        <p className="text-sm font-medium text-accent">System architecture</p>
-        <h2 id="architecture-heading" className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
+        <h2 id="architecture-heading" className="text-3xl font-bold tracking-tight sm:text-4xl">
           Connected application layers
         </h2>
         <div className="mt-8 space-y-4">
@@ -23,8 +22,8 @@ export function SystemArchitecture({ project }: SystemArchitectureProps) {
               <Card key={flow}>
                 <ol className="flex flex-col items-stretch gap-3 lg:flex-row lg:items-center lg:gap-4">
                   {steps.map((step, index) => (
-                    <li key={step} className="flex flex-1 items-center gap-3 lg:contents">
-                      <span className="flex min-h-14 flex-1 items-center justify-center rounded-lg border border-border bg-surface-raised px-4 text-center text-sm font-medium">
+                    <li key={step} className="flex min-w-0 flex-1 flex-col items-stretch gap-3 lg:contents">
+                      <span className="flex min-h-14 min-w-0 flex-1 items-center justify-center rounded-lg border border-border bg-surface-raised px-4 py-3 text-center text-sm font-medium">
                         {step}
                       </span>
                       {index < steps.length - 1 ? (

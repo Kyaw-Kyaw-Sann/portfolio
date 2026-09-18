@@ -25,7 +25,7 @@ export function ThemeToggle() {
     const nextTheme: Theme = theme === "dark" ? "light" : "dark";
 
     document.documentElement.dataset.theme = nextTheme;
-    localStorage.setItem("portfolio-theme", nextTheme);
+    try { localStorage.setItem("portfolio-theme", nextTheme); } catch { /* Theme still works when storage is unavailable. */ }
     window.dispatchEvent(new Event("portfolio-theme-change"));
   }
 

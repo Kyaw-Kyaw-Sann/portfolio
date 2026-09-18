@@ -11,8 +11,7 @@ export function ProjectLearnings({ project }: ProjectLearningsProps) {
   return (
     <Section aria-labelledby="learnings-heading" className="border-t border-border">
       <PageContainer>
-        <p className="text-sm font-medium text-accent">What I learned</p>
-        <h2 id="learnings-heading" className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
+        <h2 id="learnings-heading" className="text-3xl font-bold tracking-tight sm:text-4xl">
           Practical takeaways
         </h2>
         <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
