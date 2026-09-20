@@ -101,7 +101,7 @@ The interface supports keyboard navigation, visible focus states, responsive lay
 ## Contact
 
 - [GitHub](https://github.com/Kyaw-Kyaw-Sann)
-- [LinkedIn](https://linkedin.com/in/kyaw-kyawhsan)
+- [LinkedIn](https://linkedin.com/in/kyaw-kyaw-hsan)
 - [Email](mailto:kyawhsan042219@gmail.com)
 
 ## License

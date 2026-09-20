@@ -26,7 +26,7 @@ export const site: SiteContent = {
     },
     {
       label: "LinkedIn",
-      href: "https://linkedin.com/in/kyaw-kyawhsan",
+      href: "https://linkedin.com/in/kyaw-kyaw-hsan",
     },
     {
       label: "Email",
