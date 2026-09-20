@@ -1,5 +1,5 @@
 export type SocialLink = {
-  label: "GitHub" | "LinkedIn" | "Email";
+  label: "GitHub" | "Email";
   href: string;
 };
 

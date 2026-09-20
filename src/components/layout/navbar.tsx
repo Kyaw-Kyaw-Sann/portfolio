@@ -41,7 +41,7 @@ export function Navbar() {
         <div className="drawer-content">
           <div className="flex items-center justify-end border-b border-border pb-6"><span id="menu-title" className="sr-only">Navigation</span><button type="button" autoFocus onClick={closeMenu} aria-label="Close navigation menu" className="grid size-11 place-items-center rounded-md border border-border"><X /></button></div>
           <nav aria-label="Mobile navigation" className="mt-8 grid">
-            {links.map((link, index) => <Link key={link.label} href={link.href} onClick={closeMenu} className="flex items-center gap-4 border-b border-border py-5 text-2xl" {...(link.external ? { target: "_blank", rel: "noreferrer" } : {})}><span className="font-mono text-xs text-muted">0{index + 1}</span>{link.label}<ArrowUpRight size={20} className="ml-auto text-muted" /></Link>)}
+            {links.map((link) => <Link key={link.label} href={link.href} onClick={closeMenu} className="flex items-center gap-4 border-b border-border py-5 text-2xl" {...(link.external ? { target: "_blank", rel: "noreferrer" } : {})}>{link.label}<ArrowUpRight size={20} className="ml-auto text-muted" /></Link>)}
           </nav>
           <p className="mt-auto pt-12 text-sm text-muted">{site.name}<br />{site.role}</p>
         </div>

@@ -25,10 +25,6 @@ export const site: SiteContent = {
       href: "https://github.com/Kyaw-Kyaw-Sann",
     },
     {
-      label: "LinkedIn",
-      href: "https://linkedin.com/in/kyaw-kyaw-hsan",
-    },
-    {
       label: "Email",
       href: "mailto:kyawhsan042219@gmail.com",
     },
