@@ -9,15 +9,17 @@ type ScreenshotGalleryProps = {
 };
 
 export function ScreenshotGallery({ project }: ScreenshotGalleryProps) {
+  const galleryScreenshots = project.screenshots.slice(1);
+
   return (
-    <Section aria-labelledby="screenshots-heading" className="border-t border-border">
+    <Section id="screenshots" aria-labelledby="screenshots-heading" className="scroll-mt-24 border-t border-border">
       <PageContainer>
         <h2 id="screenshots-heading" className="text-3xl font-bold tracking-tight sm:text-4xl">
           Product interface evidence
         </h2>
-        {project.screenshots.length > 0 ? (
+        {galleryScreenshots.length > 0 ? (
           <div className="mt-8 grid gap-4 sm:grid-cols-2">
-            {project.screenshots.map((screenshot, index) => (
+            {galleryScreenshots.map((screenshot, index) => (
               <figure
                 key={screenshot.src}
                 className={project.caseStudy.highlightFirstScreenshot && index === 0 ? "sm:col-span-2" : ""}

@@ -39,6 +39,18 @@ export function SystemArchitecture({ project }: SystemArchitectureProps) {
             );
           })}
         </div>
+        <div className="mt-6 grid gap-4 lg:grid-cols-[1.2fr_1fr]">
+          <Card className="border-accent/30">
+            <h3 className="text-lg font-semibold">Main engineering focus</h3>
+            <p className="mt-3 leading-7 text-muted">{project.caseStudy.engineeringChallenge}</p>
+          </Card>
+          <Card>
+            <h3 className="text-lg font-semibold">Key decisions</h3>
+            <ul className="mt-3 space-y-2 text-sm leading-6 text-muted">
+              {project.caseStudy.technicalDecisions.slice(0, 4).map((decision) => <li key={decision}>— {decision}</li>)}
+            </ul>
+          </Card>
+        </div>
       </PageContainer>
     </Section>
   );

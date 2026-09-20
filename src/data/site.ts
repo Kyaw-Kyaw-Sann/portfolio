@@ -9,14 +9,14 @@ export const site: SiteContent = {
     expectedGraduation: "2027",
   },
   hero: {
-    headline: "I build practical web and mobile applications.",
+    headline: "I build practical full-stack web applications.",
     description:
-      "I build complete, user-focused applications with Spring Boot, PostgreSQL, Next.js, and React Native.",
+      "I build complete, user-focused web applications with Next.js, Spring Boot, and PostgreSQL. React Native extends that foundation when a product needs a mobile client.",
   },
   about: [
     "I am a final-year Computer Science student at the University of Computer Studies, Pyay.",
-    "I focus on full-stack web and mobile development through complete, practical applications.",
-    "My core stack is Spring Boot, PostgreSQL, Next.js, and React Native.",
+    "I focus on full-stack web development through complete, practical applications.",
+    "My core stack is Next.js, Spring Boot, and PostgreSQL, with React Native as an additional mobile capability.",
     "I am seeking a software development internship to contribute and learn in a professional team.",
   ],
   socialLinks: [

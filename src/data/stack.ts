@@ -15,6 +15,6 @@ export const coreStack: CoreStackItem[] = [
   },
   {
     category: "Mobile",
-    technology: "React Native",
+    technology: "React Native · bonus",
   },
 ];

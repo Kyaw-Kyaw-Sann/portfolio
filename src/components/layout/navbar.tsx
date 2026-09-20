@@ -10,7 +10,7 @@ import { BrandMark } from "./brand-mark";
 const links = [
   { href: "/#projects", label: "Projects" },
   { href: "/#about", label: "About" },
-  { href: "/resume", label: "Resume" },
+  { href: site.resumeUrl, label: "Resume", external: true },
   { href: site.socialLinks.find((link) => link.label === "GitHub")!.href, label: "GitHub", external: true },
   { href: "/#contact", label: "Contact" },
 ];

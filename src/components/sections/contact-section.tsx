@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { PageContainer } from "@/components/layout/page-container";
 import { Section } from "@/components/layout/section";
@@ -11,7 +10,7 @@ export function ContactSection() {
         <div className="flex flex-wrap items-end justify-between gap-8"><h2 id="contact-heading" className="text-4xl font-semibold leading-tight tracking-tight sm:text-6xl">Have something<br />in mind?</h2>
           <EmailContact />
         </div>
-        <div className="mt-12 flex flex-wrap gap-7 text-sm">{site.socialLinks.filter((link) => link.label !== "Email").map((link) => <a key={link.label} href={link.href} target="_blank" rel="noreferrer" className="editorial-link">{link.label}<ArrowUpRight size={16} aria-hidden="true" /></a>)}<Link href="/resume" className="editorial-link">Resume<ArrowUpRight size={16} aria-hidden="true" /></Link></div>
+        <div className="mt-12 flex flex-wrap gap-7 text-sm">{site.socialLinks.filter((link) => link.label !== "Email").map((link) => <a key={link.label} href={link.href} target="_blank" rel="noreferrer" className="editorial-link">{link.label}<ArrowUpRight size={16} aria-hidden="true" /></a>)}<a href={site.resumeUrl} target="_blank" rel="noreferrer" className="editorial-link">Resume<ArrowUpRight size={16} aria-hidden="true" /></a></div>
       </PageContainer>
     </Section>
   );

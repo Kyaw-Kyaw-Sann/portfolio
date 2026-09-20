@@ -5,12 +5,33 @@ import { usePathname } from "next/navigation";
 export function ScrollReveal() {
   const pathname = usePathname();
   useEffect(() => {
-    if (pathname.startsWith("/projects/")) {
-      window.scrollTo(0, 0);
-    }
-
     const motion = matchMedia("(prefers-reduced-motion: reduce)");
-    if (motion.matches || !("IntersectionObserver" in window)) return;
+    let routeFrame = 0;
+    let layoutFrame = 0;
+
+    const scrollToRouteTarget = () => {
+      const hash = decodeURIComponent(window.location.hash.slice(1));
+      const target = hash ? document.getElementById(hash) : null;
+
+      if (target) {
+        target.scrollIntoView({ block: "start", behavior: motion.matches ? "auto" : "smooth" });
+      } else if (pathname.startsWith("/projects/")) {
+        window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+      }
+    };
+
+    routeFrame = requestAnimationFrame(() => {
+      layoutFrame = requestAnimationFrame(scrollToRouteTarget);
+    });
+    window.addEventListener("hashchange", scrollToRouteTarget);
+
+    const cleanupRouteScroll = () => {
+      cancelAnimationFrame(routeFrame);
+      cancelAnimationFrame(layoutFrame);
+      window.removeEventListener("hashchange", scrollToRouteTarget);
+    };
+
+    if (motion.matches || !("IntersectionObserver" in window)) return cleanupRouteScroll;
     const targets = document.querySelectorAll("main section, [data-reveal]");
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -27,7 +48,12 @@ export function ScrollReveal() {
     });
     const revealAll = () => targets.forEach((target) => target.classList.remove("reveal-pending"));
     motion.addEventListener("change", revealAll);
-    return () => { observer.disconnect(); revealAll(); motion.removeEventListener("change", revealAll); };
+    return () => {
+      cleanupRouteScroll();
+      observer.disconnect();
+      revealAll();
+      motion.removeEventListener("change", revealAll);
+    };
   }, [pathname]);
   return null;
 }

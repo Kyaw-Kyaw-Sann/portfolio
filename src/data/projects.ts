@@ -3,36 +3,34 @@ import type { Project } from "@/types/portfolio";
 export const projects: Project[] = [
   {
     slug: "readora",
+    status: "in-progress",
+    statusLabel: "Currently building",
+    progressSummary: "Next.js landing page and admin dashboard, Spring Boot API, and PostgreSQL data layer are complete. The React Native customer app is still in progress.",
     name: "Readora",
     tagline: "Personalized Digital Reading Platform",
     description:
-      "Personalized digital reading platform for discovering, reading, listening to, and managing books across mobile and web.",
-    stack: ["Spring Boot", "PostgreSQL", "React Native", "Next.js"],
+      "A personalized reading platform with a completed web/admin experience and shared backend; the React Native customer app is in progress.",
+    stack: ["Next.js", "Spring Boot", "PostgreSQL", "React Native"],
     highlights: [
-      "Cross-platform architecture with a React Native customer app, Next.js landing and admin interfaces, Spring Boot API, and PostgreSQL.",
+      "Completed Next.js landing and admin interfaces backed by a shared Spring Boot API and PostgreSQL.",
       "Personalized discovery with interests, categories, recommendations, favorites, and search.",
-      "PDF and audio consumption with reading and listening progress tracking, plus admin management.",
+      "React Native customer experience for PDF/audio consumption and progress tracking is currently in development.",
     ],
     screenshots: [
       {
-        src: "/images/projects/readora/UI11.png",
-        alt: "Readora personalized book discovery screen",
-        caption: "Mobile home screen with recommendations and continue reading.",
+        src: "/images/projects/readora/ss1.png",
+        alt: "Readora landing page introducing the digital reading platform",
+        caption: "Completed Next.js landing page presenting the planned customer reading experience.",
       },
       {
-        src: "/images/projects/readora/UI13.png",
-        alt: "Readora landing page with mobile reading app preview",
-        caption: "Landing page presenting reading, listening, discovery, and subscription options.",
+        src: "/images/projects/readora/ss2.png",
+        alt: "Readora admin dashboard with user, book, review, and subscription metrics",
+        caption: "Admin overview backed by the shared Spring Boot API and PostgreSQL data model.",
       },
       {
-        src: "/images/projects/readora/UI5.png",
-        alt: "Readora book search results screen",
-        caption: "Mobile search results with filters and book discovery options.",
-      },
-      {
-        src: "/images/projects/readora/UI6.png",
-        alt: "Readora book detail screen with reading and listening actions",
-        caption: "Book details with favorite, read, listen, review, and recommendation controls.",
+        src: "/images/projects/readora/ss3.png",
+        alt: "Readora admin book management table with search and filters",
+        caption: "Book catalog administration with publication state, access level, categories, and editing controls.",
       },
     ],
     githubUrl: null,
@@ -40,14 +38,14 @@ export const projects: Project[] = [
     caseStudyUrl: "/projects/readora",
     caseStudy: {
       overview:
-        "A cross-platform reading platform for book discovery, PDF reading, audio listening, personal libraries, progress tracking, and recommendations.",
+        "An evolving reading ecosystem. The Next.js landing/admin interfaces, Spring Boot API, and PostgreSQL layer are complete; the React Native customer app is the current workstream.",
       problem:
         "Readers often use separate experiences for discovering books, reading content, listening to audio, tracking progress, and managing their personal library.",
       solution:
-        "Readora connects discovery, reading, listening, personal libraries, progress tracking, recommendations, subscription-aware access, and admin management in one platform.",
+        "Readora centralizes catalog and subscription administration today, with the shared API designed to support discovery, reading, listening, libraries, progress, and recommendations in the mobile client.",
       systemArchitecture: [
-        "React Native Customer App → Spring Boot REST API → PostgreSQL",
         "Next.js Landing/Admin → Spring Boot REST API → PostgreSQL",
+        "React Native Customer App (in progress) → Spring Boot REST API → PostgreSQL",
       ],
       featureGroups: [
         {
@@ -124,7 +122,7 @@ export const projects: Project[] = [
         "Role-based access for customer and admin responsibilities.",
       ],
       technologyRoles: [
-        { technology: "React Native", responsibility: "Customer mobile application" },
+        { technology: "React Native", responsibility: "Customer mobile application · in progress" },
         { technology: "Next.js", responsibility: "Landing page and admin dashboard" },
         { technology: "Spring Boot", responsibility: "Shared backend REST API" },
         { technology: "PostgreSQL", responsibility: "Relational application database" },
@@ -141,6 +139,8 @@ export const projects: Project[] = [
   },
   {
     slug: "quickseat",
+    status: "completed",
+    statusLabel: "Completed",
     name: "QuickSeat",
     tagline: "Cinema Booking & Ticket Validation Platform",
     description:
@@ -153,24 +153,39 @@ export const projects: Project[] = [
     ],
     screenshots: [
       {
+        src: "/images/projects/quickseat/s1.png",
+        alt: "QuickSeat customer homepage with a featured movie and booking actions",
+        caption: "Customer-facing homepage with movie discovery and a direct booking entry point.",
+      },
+      {
         src: "/images/projects/quickseat/S2.png",
-        alt: "QuickSeat now showing movie discovery screen",
-        caption: "Customer movie browsing screen with search and ticket purchase actions.",
+        alt: "QuickSeat now showing and upcoming movie catalog",
+        caption: "Movie discovery organized into current and upcoming releases.",
       },
       {
-        src: "/images/projects/quickseat/S3.png",
-        alt: "QuickSeat cinema seat selection screen",
-        caption: "Seat map showing available, selected, occupied, and VIP seat states.",
+        src: "/images/projects/quickseat/s7.png",
+        alt: "QuickSeat showtime selection with movie, cinema, and date filters",
+        caption: "Showtime discovery connects movie, cinema, date, screen, and seat pricing.",
       },
       {
-        src: "/images/projects/quickseat/S5.png",
-        alt: "QuickSeat admin dashboard overview",
-        caption: "Admin system overview with booking activity and operational summary.",
+        src: "/images/projects/quickseat/s15.png",
+        alt: "QuickSeat seat map with selected normal and couple seats",
+        caption: "Seat selection exposes available, held, booked, unavailable, and selected states.",
       },
       {
-        src: "/images/projects/quickseat/S6.png",
-        alt: "QuickSeat admin movie management screen",
-        caption: "Admin movie management table for maintaining cinema content.",
+        src: "/images/projects/quickseat/s17.png",
+        alt: "QuickSeat demonstration payment page with reservation countdown",
+        caption: "Backend-controlled reservation window with a clearly identified mock payment step.",
+      },
+      {
+        src: "/images/projects/quickseat/s19.png",
+        alt: "QuickSeat generated cinema ticket with QR code and booking details",
+        caption: "Generated ticket connects the customer booking to the staff QR-validation workflow.",
+      },
+      {
+        src: "/images/projects/quickseat/s10.png",
+        alt: "QuickSeat admin dashboard with booking, revenue, occupancy, and cancellation metrics",
+        caption: "Admin operations dashboard summarizing booking and cinema performance.",
       },
     ],
     githubUrl: null,
@@ -285,6 +300,8 @@ export const projects: Project[] = [
   },
   {
     slug: "notiva",
+    status: "completed",
+    statusLabel: "Completed",
     name: "Notiva",
     tagline: "AI-Assisted Personal Knowledge Workspace",
     description:
@@ -297,24 +314,39 @@ export const projects: Project[] = [
     ],
     screenshots: [
       {
-        src: "/images/projects/notiva/UX1.png",
-        alt: "Notiva notes workspace with categories and note cards",
-        caption: "Notes workspace with categories, pinned notes, favorites, and search controls.",
+        src: "/images/projects/notiva/BS1.png",
+        alt: "Notiva product landing page with a preview of the notes workspace",
+        caption: "Product landing page positioning AI as optional support for a focused notes workspace.",
       },
       {
-        src: "/images/projects/notiva/UX2.png",
-        alt: "Notiva rich text note editor with AI chat",
-        caption: "Rich-text editing workspace with a note-specific AI assistant panel.",
+        src: "/images/projects/notiva/BS2.png",
+        alt: "Notiva notes workspace with search, filters, categories, pinned notes, and favorites",
+        caption: "Core notes workspace with organization, discovery, pinning, and favorite controls.",
       },
       {
-        src: "/images/projects/notiva/UX3.png",
-        alt: "Notiva appearance settings and AI usage screen",
-        caption: "Settings interface showing appearance preferences and AI usage limits.",
+        src: "/images/projects/notiva/BS3.png",
+        alt: "Notiva rich-text editor with contextual AI chat beside an open note",
+        caption: "Rich editing and note-scoped AI chat work side by side without replacing the editor.",
       },
       {
-        src: "/images/projects/notiva/ss4.png",
-        alt: "Notiva mobile navigation menu",
-        caption: "Mobile navigation with notes, categories, favorites, AI conversations, and recycle bin.",
+        src: "/images/projects/notiva/BS5.png",
+        alt: "Notiva version history dialog with a saved note preview and restore action",
+        caption: "Version history allows users to inspect and restore an earlier note safely.",
+      },
+      {
+        src: "/images/projects/notiva/BS6.png",
+        alt: "Notiva AI conversations workspace with note-context chat history",
+        caption: "Persistent AI conversations remain tied to note or cross-note context.",
+      },
+      {
+        src: "/images/projects/notiva/BS7.png",
+        alt: "Notiva admin user management screen with account and verification status",
+        caption: "Admin interface separates account operations from users' private note content.",
+      },
+      {
+        src: "/images/projects/notiva/BS10.png",
+        alt: "Notiva sign-in page with Google and email authentication options",
+        caption: "Authentication entry point with Google and email-based sign-in.",
       },
     ],
     githubUrl: null,

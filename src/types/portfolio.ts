@@ -65,6 +65,9 @@ export type ProjectCaseStudy = {
 };
 
 export type Project = {
+  status: "completed" | "in-progress";
+  statusLabel: string;
+  progressSummary?: string;
   slug: string;
   name: string;
   tagline: string;

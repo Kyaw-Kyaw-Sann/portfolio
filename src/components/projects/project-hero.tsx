@@ -22,9 +22,13 @@ export function ProjectHero({ project }: ProjectHeroProps) {
         </Link>
         <div className="mt-8 grid items-center gap-8 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-12">
           <div>
-            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">{project.name}</h1>
+            <div className="flex flex-wrap items-center gap-4">
+              <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">{project.name}</h1>
+              <span className={project.status === "completed" ? "rounded-full border border-border px-3 py-1 text-xs text-muted" : "rounded-full border border-accent/40 bg-accent/10 px-3 py-1 text-xs font-medium text-focus"}>{project.statusLabel}</span>
+            </div>
             <p className="mt-3 text-xl text-muted">{project.tagline}</p>
             <p className="mt-5 max-w-2xl leading-7 text-muted">{project.description}</p>
+            {project.progressSummary ? <p className="mt-5 max-w-2xl border-l-2 border-accent pl-4 text-sm leading-6 text-muted">{project.progressSummary}</p> : null}
             <div className="mt-6 flex flex-wrap gap-2">
               {project.stack.map((technology) => (
                 <Badge key={technology} tone={technology === "AI Integration" ? "accent" : "default"}>
@@ -42,8 +46,13 @@ export function ProjectHero({ project }: ProjectHeroProps) {
                 ))}
               </dl>
             ) : null}
-            {project.githubUrl || project.liveUrl ? (
+            {project.screenshots.length > 1 || project.githubUrl || project.liveUrl ? (
               <div className="mt-8 flex flex-wrap gap-3">
+                {project.screenshots.length > 1 ? (
+                  <Link href="#screenshots" className={buttonClassName("primary")}>
+                    View Screenshots
+                  </Link>
+                ) : null}
                 {project.githubUrl ? (
                   <a href={project.githubUrl} target="_blank" rel="noreferrer" className={buttonClassName("secondary")}>
                     GitHub
