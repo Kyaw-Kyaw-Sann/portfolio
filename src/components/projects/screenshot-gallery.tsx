@@ -22,15 +22,15 @@ export function ScreenshotGallery({ project }: ScreenshotGalleryProps) {
             {galleryScreenshots.map((screenshot, index) => (
               <figure
                 key={screenshot.src}
-                className={project.caseStudy.highlightFirstScreenshot && index === 0 ? "sm:col-span-2" : ""}
+                className={screenshot.orientation === "portrait" ? "mx-auto w-full max-w-md" : project.caseStudy.highlightFirstScreenshot && index === 0 ? "sm:col-span-2" : ""}
               >
                 <Card className="p-3 sm:p-4">
-                  <div className="relative aspect-[16/10] overflow-hidden rounded-lg border border-border bg-background">
+                  <div className={`relative overflow-hidden rounded-lg border border-border bg-background ${screenshot.orientation === "portrait" ? "aspect-[9/16]" : "aspect-[16/10]"}`}>
                     <ProjectImage
                       src={screenshot.src}
                       alt={screenshot.alt}
                       fill
-                      sizes={project.caseStudy.highlightFirstScreenshot && index === 0 ? "(min-width: 1280px) 1152px, 100vw" : "(min-width: 1280px) 560px, (min-width: 640px) 50vw, 100vw"}
+                      sizes={screenshot.orientation === "portrait" ? "(min-width: 640px) 448px, 100vw" : project.caseStudy.highlightFirstScreenshot && index === 0 ? "(min-width: 1280px) 1152px, 100vw" : "(min-width: 1280px) 560px, (min-width: 640px) 50vw, 100vw"}
                       className="object-contain object-center"
                     />
                   </div>

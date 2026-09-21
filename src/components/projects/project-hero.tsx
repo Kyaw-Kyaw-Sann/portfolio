@@ -24,11 +24,10 @@ export function ProjectHero({ project }: ProjectHeroProps) {
           <div>
             <div className="flex flex-wrap items-center gap-4">
               <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">{project.name}</h1>
-              <span className={project.status === "completed" ? "rounded-full border border-border px-3 py-1 text-xs text-muted" : "rounded-full border border-accent/40 bg-accent/10 px-3 py-1 text-xs font-medium text-focus"}>{project.statusLabel}</span>
+              <span className="rounded-full border border-border px-3 py-1 text-xs text-muted">{project.statusLabel}</span>
             </div>
             <p className="mt-3 text-xl text-muted">{project.tagline}</p>
             <p className="mt-5 max-w-2xl leading-7 text-muted">{project.description}</p>
-            {project.progressSummary ? <p className="mt-5 max-w-2xl border-l-2 border-accent pl-4 text-sm leading-6 text-muted">{project.progressSummary}</p> : null}
             <div className="mt-6 flex flex-wrap gap-2">
               {project.stack.map((technology) => (
                 <Badge key={technology} tone={technology === "AI Integration" ? "accent" : "default"}>

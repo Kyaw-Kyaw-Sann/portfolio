@@ -3,34 +3,64 @@ import type { Project } from "@/types/portfolio";
 export const projects: Project[] = [
   {
     slug: "readora",
-    status: "in-progress",
-    statusLabel: "Currently building",
-    progressSummary: "Next.js landing page and admin dashboard, Spring Boot API, and PostgreSQL data layer are complete. The React Native customer app is still in progress.",
+    status: "completed",
+    statusLabel: "Completed",
     name: "Readora",
     tagline: "Personalized Digital Reading Platform",
     description:
-      "A personalized reading platform with a completed web/admin experience and shared backend; the React Native customer app is in progress.",
+      "A complete digital reading ecosystem for discovering, reading, listening to, and managing books across mobile and web.",
     stack: ["Next.js", "Spring Boot", "PostgreSQL", "React Native"],
     highlights: [
-      "Completed Next.js landing and admin interfaces backed by a shared Spring Boot API and PostgreSQL.",
+      "One shared Spring Boot and PostgreSQL backend serving the React Native customer app and Next.js web/admin interfaces.",
       "Personalized discovery with interests, categories, recommendations, favorites, and search.",
-      "React Native customer experience for PDF/audio consumption and progress tracking is currently in development.",
+      "PDF reading and audio listening with saved progress, personal libraries, subscriptions, reviews, and admin management.",
     ],
     screenshots: [
       {
         src: "/images/projects/readora/ss1.png",
         alt: "Readora landing page introducing the digital reading platform",
-        caption: "Completed Next.js landing page presenting the planned customer reading experience.",
+        caption: "Next.js landing page presenting the complete mobile reading experience.",
+      },
+      {
+        src: "/images/projects/readora/1.png",
+        alt: "Readora mobile home with personalized recommendations and continue listening progress",
+        caption: "Personalized mobile home combines discovery, categories, recommendations, and resumable listening.",
+        orientation: "portrait",
+      },
+      {
+        src: "/images/projects/readora/5.png",
+        alt: "Readora mobile book details with favorite, review, access, and listening actions",
+        caption: "Book details expose access level, metadata, favorites, ratings, reviews, and the appropriate reading or listening action.",
+        orientation: "portrait",
+      },
+      {
+        src: "/images/projects/readora/6.png",
+        alt: "Readora mobile PDF reader with page navigation and saved reading progress",
+        caption: "The PDF reader saves reading progress and supports page navigation and full-screen reading.",
+        orientation: "portrait",
+      },
+      {
+        src: "/images/projects/readora/7.png",
+        alt: "Readora mobile audio player with playback controls and saved listening progress",
+        caption: "The audio player provides seeking, playback controls, and persistent listening progress.",
+        orientation: "portrait",
+      },
+      {
+        src: "/images/projects/readora/8.png",
+        alt: "Readora personal library with premium membership, favorites, and continue reading",
+        caption: "The personal library brings together subscription status, favorites, and resumable reading activity.",
+        orientation: "portrait",
+      },
+      {
+        src: "/images/projects/readora/11.png",
+        alt: "Readora mobile interest selection used to personalize book recommendations",
+        caption: "Interest onboarding captures user preferences for personalized discovery and recommendations.",
+        orientation: "portrait",
       },
       {
         src: "/images/projects/readora/ss2.png",
         alt: "Readora admin dashboard with user, book, review, and subscription metrics",
-        caption: "Admin overview backed by the shared Spring Boot API and PostgreSQL data model.",
-      },
-      {
-        src: "/images/projects/readora/ss3.png",
-        alt: "Readora admin book management table with search and filters",
-        caption: "Book catalog administration with publication state, access level, categories, and editing controls.",
+        caption: "Next.js admin overview manages catalog, users, reviews, and subscription-aware access through the shared API.",
       },
     ],
     githubUrl: null,
@@ -38,14 +68,14 @@ export const projects: Project[] = [
     caseStudyUrl: "/projects/readora",
     caseStudy: {
       overview:
-        "An evolving reading ecosystem. The Next.js landing/admin interfaces, Spring Boot API, and PostgreSQL layer are complete; the React Native customer app is the current workstream.",
+        "A completed reading ecosystem connecting a React Native customer app, Next.js landing and admin interfaces, a shared Spring Boot REST API, and PostgreSQL.",
       problem:
         "Readers often use separate experiences for discovering books, reading content, listening to audio, tracking progress, and managing their personal library.",
       solution:
-        "Readora centralizes catalog and subscription administration today, with the shared API designed to support discovery, reading, listening, libraries, progress, and recommendations in the mobile client.",
+        "Readora unifies personalized discovery, PDF reading, audio listening, saved progress, personal libraries, reviews, subscription-aware access, and catalog administration across mobile and web clients.",
       systemArchitecture: [
         "Next.js Landing/Admin → Spring Boot REST API → PostgreSQL",
-        "React Native Customer App (in progress) → Spring Boot REST API → PostgreSQL",
+        "React Native Customer App → Spring Boot REST API → PostgreSQL",
       ],
       featureGroups: [
         {
@@ -122,7 +152,7 @@ export const projects: Project[] = [
         "Role-based access for customer and admin responsibilities.",
       ],
       technologyRoles: [
-        { technology: "React Native", responsibility: "Customer mobile application · in progress" },
+        { technology: "React Native", responsibility: "Customer mobile application" },
         { technology: "Next.js", responsibility: "Landing page and admin dashboard" },
         { technology: "Spring Boot", responsibility: "Shared backend REST API" },
         { technology: "PostgreSQL", responsibility: "Relational application database" },

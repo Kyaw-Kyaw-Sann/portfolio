@@ -17,7 +17,7 @@ The site highlights practical application development with:
 | --- | --- | --- |
 | Notiva | Completed | Knowledge management, rich-text editing, and optional AI assistance |
 | QuickSeat | Completed | Cinema booking integrity, role-based workflows, and QR ticket validation |
-| Readora | In progress | Completed web/admin and backend foundations; mobile client in development |
+| Readora | Completed | Cross-platform reading ecosystem spanning mobile, web/admin, backend APIs, and persistent progress |
 
 Each project uses the same reusable case-study structure:
 

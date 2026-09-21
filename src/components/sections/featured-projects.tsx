@@ -26,12 +26,11 @@ function ProjectPreview({ project }: { project: Project }) {
       ) : null}
       <div className="pointer-events-none relative">
         <div className="flex items-center justify-between gap-4">
-          <span className={project.status === "completed" ? "text-sm text-muted" : "text-sm font-medium text-focus"}>{project.statusLabel}</span>
+          <span className="text-sm text-muted">{project.statusLabel}</span>
           <ArrowUpRight className="text-muted transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" aria-hidden="true" />
         </div>
         <h3 className="mt-5 text-3xl font-semibold tracking-tight sm:text-4xl">{project.name}</h3>
         <p className="mt-4 leading-7 text-muted">{project.description}</p>
-        {project.progressSummary ? <p className="mt-4 border-l-2 border-accent pl-4 text-sm leading-6 text-muted">{project.progressSummary}</p> : null}
         <p className="mt-5 font-mono text-xs leading-6 text-muted">{project.stack.join(" / ")}</p>
         <ul className="mt-6 space-y-3 text-sm leading-6 text-muted">{project.highlights.slice(0, 3).map((highlight) => <li key={highlight} className="border-l border-border pl-4">{highlight}</li>)}</ul>
         <div className="relative z-20 mt-6 flex flex-wrap gap-5">
@@ -46,26 +45,17 @@ function ProjectPreview({ project }: { project: Project }) {
 }
 
 export function FeaturedProjects() {
-  const completed = orderedProjects.filter((project) => project.status === "completed");
-  const current = orderedProjects.filter((project) => project.status === "in-progress");
-
   return (
     <Section id="projects" aria-labelledby="projects-heading">
       <PageContainer>
         <div className="flex flex-wrap items-end justify-between gap-6">
           <h2 id="projects-heading" className="text-4xl font-semibold tracking-tight sm:text-5xl">Selected work.</h2>
-          <p className="max-w-sm text-sm leading-6 text-muted">Completed products first, followed by work that is still being built.</p>
+          <p className="max-w-sm text-sm leading-6 text-muted">Three completed products spanning knowledge management, booking workflows, and digital reading.</p>
         </div>
         <div className="mt-14">
           <h3 className="text-xl font-semibold tracking-tight">Completed products</h3>
-          <div className="mt-5">{completed.map((project) => <ProjectPreview key={project.slug} project={project} />)}</div>
+          <div className="mt-5">{orderedProjects.map((project) => <ProjectPreview key={project.slug} project={project} />)}</div>
         </div>
-        {current.length ? (
-          <div className="mt-14">
-            <h3 className="text-xl font-semibold tracking-tight">Currently building</h3>
-            <div className="mt-5">{current.map((project) => <ProjectPreview key={project.slug} project={project} />)}</div>
-          </div>
-        ) : null}
       </PageContainer>
     </Section>
   );

@@ -31,6 +31,7 @@ export type Screenshot = {
   src: string;
   alt: string;
   caption: string;
+  orientation?: "landscape" | "portrait";
 };
 
 export type FeatureGroup = {
@@ -65,9 +66,8 @@ export type ProjectCaseStudy = {
 };
 
 export type Project = {
-  status: "completed" | "in-progress";
+  status: "completed";
   statusLabel: string;
-  progressSummary?: string;
   slug: string;
   name: string;
   tagline: string;
