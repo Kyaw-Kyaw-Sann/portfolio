@@ -83,7 +83,7 @@ public/
 - Personal information and links: `src/data/site.ts`
 - Project content and screenshot metadata: `src/data/projects.ts`
 - Core stack: `src/data/stack.ts`
-- Resume PDF: `public/resume/Kyaw_Kyaw_Hsan_CV.pdf`
+- Resume PDF: `public/resume/Kyaw_Kyaw_Hsan_Resume.pdf`
 
 Project links are hidden when their GitHub or live-demo URL is `null`.
 
