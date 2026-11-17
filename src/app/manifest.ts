@@ -6,6 +6,7 @@ export default function manifest(): MetadataRoute.Manifest {
     short_name: "Kyaw Portfolio",
     description:
       "Portfolio of Kyaw Kyaw Hsan, a junior full-stack developer building practical web and mobile products.",
+    id: "/",
     start_url: "/",
     scope: "/",
     display: "standalone",
@@ -13,9 +14,22 @@ export default function manifest(): MetadataRoute.Manifest {
     theme_color: "#0B0F19",
     icons: [
       {
-        src: "/icon.svg",
-        sizes: "any",
-        type: "image/svg+xml",
+        src: "/icons/icon-192x192.png",
+        sizes: "192x192",
+        type: "image/png",
+        purpose: "any",
+      },
+      {
+        src: "/icons/icon-512x512.png",
+        sizes: "512x512",
+        type: "image/png",
+        purpose: "any",
+      },
+      {
+        src: "/icons/icon-maskable-512x512.png",
+        sizes: "512x512",
+        type: "image/png",
+        purpose: "maskable",
       },
     ],
   };
