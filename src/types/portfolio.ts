@@ -15,11 +15,37 @@ export type SiteContent = {
   education: Education;
   hero: {
     headline: string;
+    highlight: string;
     description: string;
   };
   about: string[];
   socialLinks: SocialLink[];
   resumeUrl: string;
+};
+
+export type TechnologyFocus = "current" | "additional";
+
+export type TechnologyGroup = {
+  title: string;
+  focus: TechnologyFocus;
+  technologies: string[];
+  description: string;
+};
+
+export type ProfessionalExperience = {
+  role: string;
+  company: string;
+  engagement: string;
+  period: string;
+  summary: string;
+};
+
+export type ResumeContent = {
+  summary: string;
+  experience: ProfessionalExperience[];
+  skillGroups: TechnologyGroup[];
+  selectedProjectSlugs: string[];
+  downloadUrl: string;
 };
 
 export type CoreStackItem = {

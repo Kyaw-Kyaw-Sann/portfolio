@@ -1,48 +1,42 @@
-import { ProjectImage } from "@/components/ui/project-image";
 import { PageContainer } from "@/components/layout/page-container";
 import { Section } from "@/components/layout/section";
-import { Card } from "@/components/ui/card";
+import { ProjectImage } from "@/components/ui/project-image";
 import type { Project } from "@/types/portfolio";
 
-type ScreenshotGalleryProps = {
-  project: Project;
-};
-
-export function ScreenshotGallery({ project }: ScreenshotGalleryProps) {
-  const galleryScreenshots = project.screenshots.slice(1);
+export function ScreenshotGallery({ project }: { project: Project }) {
+  const screenshots = project.screenshots.slice(1);
 
   return (
     <Section id="screenshots" aria-labelledby="screenshots-heading" className="scroll-mt-24 border-t border-border">
       <PageContainer>
-        <h2 id="screenshots-heading" className="text-3xl font-bold tracking-tight sm:text-4xl">
-          Product interface evidence
-        </h2>
-        {galleryScreenshots.length > 0 ? (
-          <div className="mt-8 grid gap-4 sm:grid-cols-2">
-            {galleryScreenshots.map((screenshot, index) => (
-              <figure
-                key={screenshot.src}
-                className={screenshot.orientation === "portrait" ? "mx-auto w-full max-w-md" : project.caseStudy.highlightFirstScreenshot && index === 0 ? "sm:col-span-2" : ""}
-              >
-                <Card className="p-3 sm:p-4">
-                  <div className={`relative overflow-hidden rounded-lg border border-border bg-background ${screenshot.orientation === "portrait" ? "aspect-[9/16]" : "aspect-[16/10]"}`}>
+        <div className="flex flex-wrap items-end justify-between gap-5">
+          <h2 id="screenshots-heading" className="case-study-heading">Interface evidence.</h2>
+          <p className="max-w-sm text-sm leading-6 text-muted">Real screens from the implemented product workflows.</p>
+        </div>
+
+        {screenshots.length ? (
+          <div className="mt-10 grid gap-x-6 gap-y-10 md:grid-cols-2">
+            {screenshots.map((screenshot, index) => {
+              const isPortrait = screenshot.orientation === "portrait";
+              const isLead = index === 0 && !isPortrait;
+              return (
+                <figure key={screenshot.src} className={`${isLead ? "md:col-span-2" : ""} ${isPortrait ? "mx-auto w-full max-w-sm" : ""}`}>
+                  <div className={`case-screenshot-frame relative overflow-hidden ${isPortrait ? "aspect-[9/16]" : "aspect-[16/10]"}`}>
                     <ProjectImage
                       src={screenshot.src}
                       alt={screenshot.alt}
                       fill
-                      sizes={screenshot.orientation === "portrait" ? "(min-width: 640px) 448px, 100vw" : project.caseStudy.highlightFirstScreenshot && index === 0 ? "(min-width: 1280px) 1152px, 100vw" : "(min-width: 1280px) 560px, (min-width: 640px) 50vw, 100vw"}
-                      className="object-contain object-center"
+                      sizes={isPortrait ? "(min-width: 768px) 384px, 100vw" : isLead ? "(min-width: 1280px) 1200px, 100vw" : "(min-width: 1280px) 580px, (min-width: 768px) 50vw, 100vw"}
+                      className="object-contain p-2 sm:p-4"
                     />
                   </div>
-                  <figcaption className="px-1 pt-3 text-sm text-muted">{screenshot.caption}</figcaption>
-                </Card>
-              </figure>
-            ))}
+                  <figcaption className="mt-3 text-sm leading-6 text-muted">{screenshot.caption}</figcaption>
+                </figure>
+              );
+            })}
           </div>
         ) : (
-          <Card className="mt-8">
-            <p className="text-muted">Screenshots will be added when they are available.</p>
-          </Card>
+          <p className="mt-10 border-y border-border py-8 text-sm text-muted">Screenshots will be added when they are available.</p>
         )}
       </PageContainer>
     </Section>

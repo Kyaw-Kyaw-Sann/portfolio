@@ -1,10 +1,31 @@
-export function BrandMark() {
+import Image from "next/image";
+
+type BrandMarkProps = {
+  className?: string;
+};
+
+export function BrandMark({ className = "size-11" }: BrandMarkProps) {
   return (
-    <svg viewBox="0 0 40 40" fill="none" aria-hidden="true" className="size-10 shrink-0">
-      <path d="M20 3 36 12v16L20 37 4 28V12L20 3Z" stroke="currentColor" strokeWidth="1.5" />
-      <path d="m4 12 16 9 16-9M20 21v16" stroke="currentColor" strokeWidth="1.5" />
-      <path d="m12 16 16-9M12 16v9l8 5" stroke="var(--accent)" strokeWidth="3" />
-      <path d="m27 18 5-3v10l-5 3V18Z" fill="var(--accent)" />
-    </svg>
+    <span
+      aria-hidden="true"
+      className={`relative block shrink-0 overflow-hidden bg-transparent ${className}`}
+    >
+      <Image
+        src="/logo.svg"
+        alt=""
+        fill
+        sizes="48px"
+        unoptimized
+        className="brand-logo brand-logo--light object-cover"
+      />
+      <Image
+        src="/logo-dark.svg"
+        alt=""
+        fill
+        sizes="48px"
+        unoptimized
+        className="brand-logo brand-logo--dark object-cover"
+      />
+    </span>
   );
 }

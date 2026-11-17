@@ -1,33 +1,33 @@
 import { PageContainer } from "@/components/layout/page-container";
 import { Section } from "@/components/layout/section";
-import { Card } from "@/components/ui/card";
 import type { Project } from "@/types/portfolio";
 
-type FeatureGroupsProps = {
-  project: Project;
-};
-
-export function FeatureGroups({ project }: FeatureGroupsProps) {
+export function FeatureGroups({ project }: { project: Project }) {
   return (
-    <Section aria-labelledby="features-heading" className="border-t border-border">
+    <Section aria-labelledby="features-heading">
       <PageContainer>
-        <h2 id="features-heading" className="text-3xl font-bold tracking-tight sm:text-4xl">
-          Product responsibilities
-        </h2>
-        <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-          {project.caseStudy.featureGroups.map((group) => (
-            <Card key={group.title}>
-              <h3 className="text-lg font-semibold">{group.title}</h3>
-              <ul className="mt-4 space-y-2 text-sm leading-6 text-muted">
-                {group.features.map((feature) => (
-                  <li key={feature} className="flex gap-2">
-                    <span aria-hidden="true" className="mt-2 size-1.5 shrink-0 rounded-full bg-accent" />
-                    <span>{feature}</span>
-                  </li>
-                ))}
-              </ul>
-            </Card>
-          ))}
+        <div className="grid gap-8 lg:grid-cols-[0.7fr_1.3fr] lg:gap-20">
+          <h2 id="features-heading" className="case-study-heading">Core responsibilities.</h2>
+          <div className="grid border-t border-border md:grid-cols-2">
+            {project.caseStudy.featureGroups.map((group, index) => {
+              const visibleFeatures = group.features.slice(0, 3);
+              const remaining = group.features.length - visibleFeatures.length;
+              return (
+                <article key={group.title} className={`border-b border-border py-6 md:px-6 ${index % 2 === 0 ? "md:border-r md:pl-0" : "md:pr-0"}`}>
+                  <h3 className="text-base font-semibold">{group.title}</h3>
+                  <ul className="mt-4 space-y-2 text-sm leading-6 text-muted">
+                    {visibleFeatures.map((feature) => (
+                      <li key={feature} className="flex gap-3">
+                        <span aria-hidden="true" className="mt-2.5 size-1 shrink-0 bg-signal" />
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  {remaining > 0 ? <p className="mt-3 font-mono text-xs text-signal-soft">+{remaining} related capabilities</p> : null}
+                </article>
+              );
+            })}
+          </div>
         </div>
       </PageContainer>
     </Section>

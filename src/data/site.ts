@@ -9,15 +9,16 @@ export const site: SiteContent = {
     expectedGraduation: "2027",
   },
   hero: {
-    headline: "I build practical full-stack web applications.",
+    headline: "I build practical systems.",
+    highlight: "From interface to backend.",
     description:
-      "I build complete, user-focused web applications with Next.js, Spring Boot, and PostgreSQL. React Native extends that foundation when a product needs a mobile client.",
+      "I am currently strengthening my professional full-stack experience with Next.js, React, Express, and MySQL while continuing to build on Spring Boot, PostgreSQL, and React Native.",
   },
   about: [
     "I am a final-year Computer Science student at the University of Computer Studies, Pyay.",
-    "I focus on full-stack web development through complete, practical applications.",
-    "My core stack is Next.js, Spring Boot, and PostgreSQL, with React Native as an additional mobile capability.",
-    "I am open to entry-level software development opportunities where I can contribute, learn, and grow within a professional team.",
+    "I am gaining professional experience as a Full-Stack Developer Intern at Estrella Star Technology Solution.",
+    "My current focus is Next.js, React, Express, and MySQL, supported by experience with Spring Boot, PostgreSQL, and React Native.",
+    "I learn by building complete products and am growing toward a junior full-stack developer role.",
   ],
   socialLinks: [
     {
@@ -29,5 +30,5 @@ export const site: SiteContent = {
       href: "mailto:kyawhsan042219@gmail.com",
     },
   ],
-  resumeUrl: "/resume/Kyaw_Kyaw_Hsan_Resume.pdf",
+  resumeUrl: "/resume",
 };

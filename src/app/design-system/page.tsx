@@ -11,9 +11,12 @@ export const metadata: Metadata = {
 };
 
 const tokenItems = [
-  ["Background", "#0B0F19", "bg-background"],
+  ["Canvas", "#0B0F19", "bg-background"],
+  ["Ink", "#060910", "bg-ink"],
   ["Surface", "#111827", "bg-surface"],
-  ["Accent", "#6366F1", "bg-accent"],
+  ["Indigo accent", "#6366F1", "bg-accent"],
+  ["Signal blue", "#3B82F6", "bg-signal"],
+  ["Border", "#1F2937", "bg-border"],
 ] as const;
 
 export default function DesignSystemPage() {
@@ -25,7 +28,8 @@ export default function DesignSystemPage() {
             Design system
           </h1>
           <p className="mt-4 max-w-2xl text-base text-muted sm:text-lg">
-            Reusable visual primitives for a calm, technical, dark-first portfolio.
+            Reusable visual primitives for a calm, technical portfolio built on graphite, black,
+            indigo, and restrained blue signals.
           </p>
         </PageContainer>
       </Section>
@@ -35,7 +39,7 @@ export default function DesignSystemPage() {
           <h2 id="tokens-heading" className="text-2xl font-semibold tracking-tight">
             Color tokens
           </h2>
-          <div className="mt-6 grid gap-4 sm:grid-cols-3">
+          <div className="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
             {tokenItems.map(([name, value, colorClass]) => (
               <Card key={name} className="flex items-center gap-4">
                 <span
@@ -56,6 +60,7 @@ export default function DesignSystemPage() {
             Typography
           </h2>
           <Card className="mt-6">
+            <p className="technical-label">Typography / Editorial hierarchy</p>
             <h3 className="text-3xl font-bold tracking-tight sm:text-4xl">
               Clear hierarchy supports quick scanning.
             </h3>
@@ -84,9 +89,37 @@ export default function DesignSystemPage() {
           </h2>
           <div className="mt-6 flex flex-wrap gap-2">
             <Badge>Next.js</Badge>
-            <Badge>TypeScript</Badge>
+            <Badge>React</Badge>
+            <Badge tone="signal">Express</Badge>
+            <Badge tone="signal">MySQL</Badge>
             <Badge tone="accent">Spring Boot</Badge>
             <Badge tone="accent">PostgreSQL</Badge>
+          </div>
+        </Section>
+
+        <Section aria-labelledby="framing-heading" className="border-t border-border">
+          <h2 id="framing-heading" className="text-2xl font-semibold tracking-tight">
+            Editorial framing
+          </h2>
+          <div className="mt-6 grid gap-6 lg:grid-cols-2">
+            <div className="editorial-panel p-6">
+              <p className="technical-label">Structured content</p>
+              <h3 className="mt-4 text-2xl font-semibold tracking-tight">Quiet surfaces, clear edges.</h3>
+              <p className="mt-3 max-w-md leading-7 text-muted">
+                Near-black layers and restrained borders create hierarchy without turning every
+                piece of content into a floating card.
+              </p>
+            </div>
+            <div className="media-frame min-h-56 p-6">
+              <div className="flex h-full min-h-44 items-end border border-border bg-surface p-5">
+                <div>
+                  <p className="technical-label">Media frame</p>
+                  <p className="mt-3 max-w-sm text-sm leading-6 text-muted">
+                    A single blue rule identifies important imagery without glow or decorative noise.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </Section>
 
@@ -95,13 +128,13 @@ export default function DesignSystemPage() {
             Cards
           </h2>
           <div className="mt-6 grid gap-4 md:grid-cols-2">
-            <Card>
+            <Card interactive>
               <h3 className="text-lg font-semibold">Standard surface</h3>
               <p className="mt-2 text-sm leading-6 text-muted">
                 A restrained border and surface color create separation without visual noise.
               </p>
             </Card>
-            <Card>
+            <Card interactive>
               <h3 className="text-lg font-semibold">Responsive spacing</h3>
               <p className="mt-2 text-sm leading-6 text-muted">
                 Containers, sections, and cards adapt from compact mobile spacing to generous desktop

@@ -15,7 +15,7 @@ export function ScrollReveal() {
 
       if (target) {
         target.scrollIntoView({ block: "start", behavior: motion.matches ? "auto" : "smooth" });
-      } else if (pathname.startsWith("/projects/")) {
+      } else {
         window.scrollTo({ top: 0, left: 0, behavior: "auto" });
       }
     };
