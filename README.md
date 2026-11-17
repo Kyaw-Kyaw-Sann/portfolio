@@ -6,10 +6,14 @@ A project-first portfolio for presenting full-stack engineering work through rea
 
 The site highlights practical application development with:
 
-- Next.js and TypeScript for web interfaces
-- Spring Boot for REST APIs and business logic
-- PostgreSQL for relational data
-- React Native as an additional mobile capability
+- Next.js and React for web interfaces
+- Express and Spring Boot for backend APIs and business logic
+- MySQL and PostgreSQL for relational data
+- React Native for cross-platform mobile applications
+
+## Current experience
+
+Kyaw Kyaw Hsan is currently a Full-Stack Developer Intern at Estrella Star Technology Solution, contributing to a point-of-sale software project with Next.js, React, Express, and MySQL. Internal implementation details and project media are only shared when public disclosure is permitted.
 
 ## Featured projects
 

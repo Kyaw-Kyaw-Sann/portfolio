@@ -38,7 +38,7 @@ export function ThemeToggle() {
       onClick={toggleTheme}
       aria-label={label}
       aria-pressed={isLight}
-      className="inline-flex size-10 items-center justify-center rounded-lg border border-border bg-surface text-muted transition-[background-color,border-color,color,transform] duration-200 hover:-translate-y-px hover:border-muted/50 hover:bg-surface-raised hover:text-foreground"
+      className="inline-flex size-10 items-center justify-center rounded-md border border-border-strong bg-ink text-muted transition-[background-color,border-color,color,transform] duration-200 hover:-translate-y-px hover:border-signal hover:bg-surface-subtle hover:text-foreground"
     >
       {isLight ? <Moon aria-hidden="true" size={18} /> : <Sun aria-hidden="true" size={18} />}
     </button>

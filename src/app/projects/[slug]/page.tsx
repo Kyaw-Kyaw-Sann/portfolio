@@ -7,7 +7,6 @@ import { ProjectCta } from "@/components/projects/project-cta";
 import { ProjectHero } from "@/components/projects/project-hero";
 import { ProjectLearnings } from "@/components/projects/project-learnings";
 import { ProjectOverview } from "@/components/projects/project-overview";
-import { ProjectWorkflow } from "@/components/projects/project-workflow";
 import { ScreenshotGallery } from "@/components/projects/screenshot-gallery";
 import { SystemArchitecture } from "@/components/projects/system-architecture";
 import { projects } from "@/data/projects";
@@ -53,7 +52,6 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         <ProjectHero project={project} />
         <ProjectOverview project={project} />
         <SystemArchitecture project={project} />
-        <ProjectWorkflow project={project} />
         <FeatureGroups project={project} />
         <ScreenshotGallery project={project} />
         <ProjectLearnings project={project} />
