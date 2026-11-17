@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { PwaRegistration } from "@/components/layout/pwa-registration";
 import { ScrollReveal } from "@/components/layout/scroll-reveal";
 
 const themeInitializationScript = `
@@ -27,7 +28,11 @@ export default function RootLayout({
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInitializationScript }} />
       </head>
-      <body>{children}<ScrollReveal /></body>
+      <body>
+        {children}
+        <ScrollReveal />
+        <PwaRegistration />
+      </body>
     </html>
   );
 }
